@@ -19,19 +19,45 @@ const choice = {
 
 function App() {
   const [userSelect, setUserSelect] = useState(null);
+  const [computerSelect, setComputerSelect] = useState(null);
+  const [result, setResult] = useState('');
   const play = (userChoice) => {
     setUserSelect(choice[userChoice])
+    let computerChoice = randomChoice()
+    setComputerSelect(computerChoice)
+    setResult(judgement(choice[userChoice],computerChoice))
   }
+
+  const judgement = (user, computer) => {
+    console.log(user, computer)
+    if(user.name === computer.name){
+      return "TIE"
+    }else if (user.name === "Rock")
+    return computer.name === "Scissors" ? "WIN" : "LOSE";
+    else if (user.name === "Paper")
+    return computer.name === "Rock" ? "WIN" : "LOSE";
+    else if (user.name === "Scissors")
+    return computer.name === "Paper" ? "WIN" : "LOSE";
+  }
+
+  const randomChoice=()=>{
+    let itemArray = Object.keys(choice)
+    console.log(itemArray)
+    let randomItem = Math.floor(Math.random()*itemArray.length);
+    let final = itemArray[randomItem]
+    return choice[final];
+  }
+
   return (
-    <div>
+    <div className="body">
       <div className='main'>
-        <Box title='YOU' item={userSelect}/>
-        <Box title='COMPUTER'/>
+        <Box title='YOU' item={userSelect} result={result}/>
+        <Box title='COMPUTER' item={computerSelect} result={result}/>
       </div>
-      <div className='main'>
-        <button onClick={()=>play("Scissors")}>가위</button>
-        <button onClick={()=>play("Rock")}>바위</button>
-        <button onClick={()=>play("Paper")}>보</button>        
+      <div className='buttons'>
+        <button onClick={()=>play("Scissors")}><i class="fa-regular fa-hand-scissors"></i></button>
+        <button onClick={()=>play("Rock")}><i class="fa-regular fa-hand-back-fist"></i></button>
+        <button onClick={()=>play("Paper")}><i class="fa-regular fa-hand"></i></button>        
       </div>
     </div>
   );

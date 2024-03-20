@@ -1,3 +1,10 @@
+.body{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
 .box{
   border:1px solid black;
   width:500px;
@@ -12,4 +19,24 @@
 .main{
   display:flex;
   justify-content: center;
+}
+.WIN{
+  color:green;
+}
+.LOSE{
+  color:red;
+}
+.buttons{
+  display:flex;
+  justify-content: center;
+  margin-top:20px;
+}
+.buttons button{
+  font-size:40px;
+  width:80px;
+  height:80px;
+  margin: 0 20px;
+  background-color: white;
+  border:1px solid gray;
+  border-radius: 40px;
 }
