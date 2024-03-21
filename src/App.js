@@ -42,7 +42,6 @@ function App() {
 
   const randomChoice=()=>{
     let itemArray = Object.keys(choice)
-    console.log(itemArray)
     let randomItem = Math.floor(Math.random()*itemArray.length);
     let final = itemArray[randomItem]
     return choice[final];
